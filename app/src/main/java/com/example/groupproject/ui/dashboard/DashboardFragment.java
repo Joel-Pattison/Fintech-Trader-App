@@ -31,7 +31,7 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
         btnTrade = binding.btnTrade;
-        btnFinInfo = binding.btnViewFinantialInfo;
+        btnFinInfo = binding.btnViewFinancialInfo;
 
         btnTrade.setOnClickListener(new View.OnClickListener() {
             @Override

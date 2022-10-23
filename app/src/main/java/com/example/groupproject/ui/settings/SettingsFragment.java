@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.groupproject.BrokerContactActivity;
+import com.example.groupproject.LeaderboardActivity;
 import com.example.groupproject.MainActivity;
 import com.example.groupproject.RatingActivity;
 import com.example.groupproject.RegisterActivity;
@@ -22,7 +23,7 @@ import com.example.groupproject.databinding.FragmentSettingsBinding;
 public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
-    private Button btnReview, btnBrokerContact, btnSupport;
+    private Button btnReview, btnBrokerContact, btnSupport, btnLeaderboard;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class SettingsFragment extends Fragment {
         btnReview = binding.btnReview;
         btnBrokerContact = binding.btnRequestProfessional;
         btnSupport = binding.btnContactSupport;
+        btnLeaderboard = binding.btnHighscores;
 
         btnReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +58,14 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent send = new Intent(getActivity(), SupportActivity.class);
+                startActivity(send);
+            }
+        });
+
+        btnLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent send = new Intent(getActivity(), LeaderboardActivity.class);
                 startActivity(send);
             }
         });

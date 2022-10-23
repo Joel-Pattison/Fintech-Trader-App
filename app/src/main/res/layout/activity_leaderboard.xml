@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LeaderboardActivity">
+
+    <TextView
+        android:id="@+id/lblLeaderboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="Leaderboard"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.138" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="349dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="319dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTech"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtTechName1"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Username"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtShareAmount1"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Profit"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSharePrice1"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Rank"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtTechName2"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtShareAmount2"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSharePrice2"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtTechName3"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtShareAmount3"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSharePrice3"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtTechName4"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtShareAmount4"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSharePrice4"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtTechName5"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtShareAmount5"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSharePrice5"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
