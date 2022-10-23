@@ -4,63 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TradeActivity">
+    tools:context=".FinantialInformationActivity">
+
+    <Spinner
+        android:id="@+id/drpInfoStock"
+        android:layout_width="303dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
-        android:id="@+id/txtTrade"
+        android:id="@+id/txtFinInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alfa_slab_one"
-        android:text="Trade"
+        android:text="Finantcial Information"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <Spinner
-        android:id="@+id/drpTradeType"
+        android:id="@+id/drpInfoType"
         android:layout_width="303dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.409" />
+        app:layout_constraintVertical_bias="0.133" />
 
-    <Button
-        android:id="@+id/btnCompleteTrade"
-        android:layout_width="300dp"
-        android:layout_height="52dp"
-        android:text="Complete Trade"
-        android:textColor="#000000"
-        app:backgroundTint="@color/light_blue"
+    <WebView
+        android:id="@+id/webChart"
+        android:layout_width="366dp"
+        android:layout_height="449dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.963" />
 
-    <Spinner
-        android:id="@+id/drpType"
-        android:layout_width="303dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
-
-    <Spinner
-        android:id="@+id/drpStock"
-        android:layout_width="303dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
 </androidx.constraintlayout.widget.ConstraintLayout>

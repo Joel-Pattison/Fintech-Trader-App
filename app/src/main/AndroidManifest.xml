@@ -16,6 +16,9 @@
         android:theme="@style/Theme.GroupProject"
         tools:targetApi="31">
         <activity
+            android:name=".FinantialInformationActivity"
+            android:exported="false" />
+        <activity
             android:name=".TradeActivity"
             android:exported="false" />
         <activity
