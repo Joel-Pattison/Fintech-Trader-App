@@ -27,6 +27,11 @@ public class RegisterActivity extends AppCompatActivity {
                     Intent send = new Intent(RegisterActivity.this, BrokerSelect.class);
                     startActivity(send);
                 }
+                else {
+                    Intent send = new Intent(RegisterActivity.this, HomeActivity.class);
+                    startActivity(send);
+                }
+
             }
         });
     }

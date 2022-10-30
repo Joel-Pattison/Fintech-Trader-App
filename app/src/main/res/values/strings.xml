@@ -5,4 +5,19 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
     <string name="defaultTableRow">-</string>
+    <string-array name = "stock_types">
+        <item>Technology Shares</item>
+        <item>Crypto</item>
+    </string-array>
+    <string-array name = "tech_stocks">
+        <item>Apple</item>
+        <item>Microsoft</item>
+        <item>Amazon</item>
+        <item>Intel</item>
+        <item>AMD</item>
+    </string-array>
+    <string-array name = "crypto">
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+    </string-array>
 </resources>
