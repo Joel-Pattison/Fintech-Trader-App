@@ -19,11 +19,12 @@ import com.example.groupproject.RatingActivity;
 import com.example.groupproject.RegisterActivity;
 import com.example.groupproject.SupportActivity;
 import com.example.groupproject.databinding.FragmentSettingsBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
-    private Button btnReview, btnBrokerContact, btnSupport, btnLeaderboard;
+    private Button btnReview, btnBrokerContact, btnSupport, btnLeaderboard, btnLogout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class SettingsFragment extends Fragment {
         btnBrokerContact = binding.btnRequestProfessional;
         btnSupport = binding.btnContactSupport;
         btnLeaderboard = binding.btnHighscores;
+        btnLogout = binding.btnLogout;
 
         btnReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,14 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent send = new Intent(getActivity(), LeaderboardActivity.class);
+                startActivity(send);
+            }
+        });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent send = new Intent(getActivity(), MainActivity.class);
                 startActivity(send);
             }
         });
