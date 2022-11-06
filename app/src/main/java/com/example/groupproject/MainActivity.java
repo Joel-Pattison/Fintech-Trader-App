@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressLogin);
         mAuth = FirebaseAuth.getInstance();
 
+        txtEmail.setText("hello@gmail.com");
+        txtPassword.setText("hello123");
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,5 +99,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        System.exit(0);
     }
 }
