@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeFragment extends Fragment {
 
@@ -29,6 +31,7 @@ public class HomeFragment extends Fragment {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    FirebaseFirestore db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,12 +42,31 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         lblWelcome = binding.lblWelcome;
+        db = FirebaseFirestore.getInstance();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        DocumentReference docRef = db.collection("users").document(userID);
+
+        db.collection("users").document(userID)
+                .get().addOnCompleteListener(task -> {
+                    if(task.isSuccessful() && task.getResult() != null){
+                        String firstName = task.getResult().getString("First Name");
+                        String email = task.getResult().getString("Email");
+                        String phone = task.getResult().getString("Phone");
+                        User curUserProfile = task.getResult().toObject(User.class);
+
+
+                        String name = curUserProfile.name;
+                        lblWelcome.setText("Welcome back, " + name + "!");
+                    }else{
+                        Toast.makeText(getActivity(), "Something went wrong when trying to get your data.", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        /*reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User userProfile = dataSnapshot.getValue(User.class);
@@ -59,7 +81,7 @@ public class HomeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getActivity(), "Something went wrong when trying to get your data.", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);

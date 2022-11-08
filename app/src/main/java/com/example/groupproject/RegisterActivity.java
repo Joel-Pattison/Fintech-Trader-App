@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText txtEmail, txtName, txtPassword;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtRegisterPassword);
         progressBar = findViewById(R.id.progressRegister);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +102,23 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     User user = new User(name, email);
+
+                    String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    /*Toast.makeText(RegisterActivity.this, "inside", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);*/
+                    /*db.collection("users").document(userID).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(RegisterActivity.this, "Your account has been created", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                            else{
+                                Toast.makeText(RegisterActivity.this, "Failed to create account, try again", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+                    });*/
 
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
