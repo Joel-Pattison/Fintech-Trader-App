@@ -21,13 +21,11 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="349dp"
-        android:layout_height="134dp"
+        android:layout_width="348dp"
+        android:layout_height="164dp"
         android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginBottom="319dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +33,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTech"
         app:layout_constraintVertical_bias="0.0">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lblTechName"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Name"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblShareAmount"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Amount"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblSharePrice"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Value"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -188,7 +218,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alfa_slab_one"
-        android:text="Tech Shares"
+        android:text="Crypto"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

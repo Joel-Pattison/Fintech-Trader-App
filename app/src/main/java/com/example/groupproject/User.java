@@ -19,8 +19,8 @@ public class User {
         this.brokerUID = "none";
         balance.put("euroBalance", "100");
         balance.put("brokerEuroBalance", "500");
-        techStocks.put("amd", "5");
-        techStocks.put("apple", "10");
-        crypto.put("bitcoin", "0.02");
+        techStocks.put("AMD", "5");
+        techStocks.put("Apple", "10");
+        crypto.put("Bitcoin", "0.02");
     }
 }

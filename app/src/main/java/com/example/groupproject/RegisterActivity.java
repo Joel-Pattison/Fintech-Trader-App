@@ -104,9 +104,9 @@ public class RegisterActivity extends AppCompatActivity {
                     User user = new User(name, email);
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    /*Toast.makeText(RegisterActivity.this, "inside", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);*/
-                    /*db.collection("users").document(userID).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    // Toast.makeText(RegisterActivity.this, "inside", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                    db.collection("users").document(userID).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -118,9 +118,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                             }
                         }
-                    });*/
+                    });
 
-                    FirebaseDatabase.getInstance().getReference("Users")
+/*                    FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -134,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
-                            });
+                            });*/
                 }else{
                     Toast.makeText(RegisterActivity.this, "Failed to create account, try again", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
