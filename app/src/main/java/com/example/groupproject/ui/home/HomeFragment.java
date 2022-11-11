@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
     private TextView txtCryptoName1, txtCryptoName2;
     private TextView txtCryptoAmount1, txtCryptoAmount2;
     private TextView txtCryptoPrice1, txtCryptoPrice2;
+    private TextView lblBrokerBalance, lblBalance;
     FirebaseFirestore db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -100,6 +101,9 @@ public class HomeFragment extends Fragment {
         txtCryptoPrice1 = binding.txtCryptoPrice1;
         txtCryptoPrice2 = binding.txtCryptoPrice2;
 
+        lblBalance = binding.lblBalance;
+        lblBrokerBalance = binding.lblBrokerBalance;
+
         DocumentReference docRef = db.collection("users").document(userID);
 
         db.collection("users").document(userID)
@@ -112,6 +116,7 @@ public class HomeFragment extends Fragment {
 
                         displayStocks(curUserProfile);
                         displayCrypto(curUserProfile);
+                        displayBalance(curUserProfile);
                         //getPrices();
                         //getStockPrices();
                     }else{
@@ -139,6 +144,16 @@ public class HomeFragment extends Fragment {
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
+    }
+
+    public void displayBalance(User user) {
+        Set keys = user.crypto.keySet();
+        String balance = user.balance.get("euroBalance");
+        String brokerBalance = user.balance.get("brokerEuroBalance");
+
+        lblBalance.setText(lblBalance.getText() + "€" + balance);
+        lblBrokerBalance.setText(lblBrokerBalance.getText() + "€" + brokerBalance);
+
     }
 
     public void displayCrypto(User user) {

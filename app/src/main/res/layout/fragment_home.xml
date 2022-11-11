@@ -7,6 +7,34 @@
     tools:context=".ui.home.HomeFragment">
 
     <TextView
+        android:id="@+id/lblBrokerBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Broker Funds:            "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <TextView
+        android:id="@+id/lblBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Trading Balance:      "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
         android:id="@+id/lblTech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +45,94 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintVertical_bias="0.287" />
+
+    <TextView
+        android:id="@+id/lblCrypto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="Crypto"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66" />
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="349dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.745">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtCryptoName1"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtCryptoAmount1"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtCryptoPrice1"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtCryptoName2"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtCryptoAmount2"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtCryptoPrice2"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultTableRow"
+                android:textSize="20sp" />
+        </TableRow>
+
+    </TableLayout>
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -214,115 +329,16 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/lblCrypto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alfa_slab_one"
-        android:text="Crypto"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
-
-    <TableLayout
-        android:id="@+id/tableLayout2"
-        android:layout_width="349dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtCryptoName1"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/defaultTableRow"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txtCryptoAmount1"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/defaultTableRow"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txtCryptoPrice1"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/defaultTableRow"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtCryptoName2"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/defaultTableRow"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txtCryptoAmount2"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/defaultTableRow"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txtCryptoPrice2"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/defaultTableRow"
-                android:textSize="20sp" />
-        </TableRow>
-
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/assetsTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alfa_slab_one"
-        android:text="Assets"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041" />
-
-    <TextView
         android:id="@+id/lblWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.022" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
