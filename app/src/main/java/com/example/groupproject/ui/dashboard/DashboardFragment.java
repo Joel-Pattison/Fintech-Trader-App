@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.groupproject.AddBalanceActivity;
 import com.example.groupproject.FinantialInformationActivity;
 import com.example.groupproject.PredictedFuturesActivity;
 import com.example.groupproject.TradeActivity;
@@ -21,7 +22,7 @@ public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
-    private Button btnTrade, btnFinInfo, btnFinFutures;
+    private Button btnTrade, btnFinInfo, btnFinFutures, btnAddBalance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class DashboardFragment extends Fragment {
         btnTrade = binding.btnTrade;
         btnFinInfo = binding.btnViewFinancialInfo;
         btnFinFutures = binding.btnViewPredictedFutures;
+        btnAddBalance = binding.btnAddBalance;
 
         btnTrade.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,14 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent send = new Intent(getActivity(), PredictedFuturesActivity.class);
+                startActivity(send);
+            }
+        });
+
+        btnAddBalance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent send = new Intent(getActivity(), AddBalanceActivity.class);
                 startActivity(send);
             }
         });

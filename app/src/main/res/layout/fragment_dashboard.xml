@@ -7,10 +7,10 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <Button
-        android:id="@+id/btnViewPredictedFutures"
+        android:id="@+id/btnManageBrokerBalance"
         android:layout_width="300dp"
         android:layout_height="52dp"
-        android:text="View Predicted Futures"
+        android:text="broker managed balance"
         android:textColor="#000000"
         app:backgroundTint="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +18,21 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558" />
+        app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/btnAddBalance"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:text="Add Balance"
+        android:textColor="#000000"
+        app:backgroundTint="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405" />
 
     <Button
         android:id="@+id/btnViewFinancialInfo"
@@ -32,7 +46,21 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintVertical_bias="0.642" />
+
+    <Button
+        android:id="@+id/btnViewPredictedFutures"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:text="View Predicted Futures"
+        android:textColor="#000000"
+        app:backgroundTint="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
 
     <TextView
         android:id="@+id/lblTrade"

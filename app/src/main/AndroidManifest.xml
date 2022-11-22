@@ -18,6 +18,9 @@
             android:name=".PredictedFuturesActivity"
             android:exported="false" />
         <activity
+            android:name=".AddBalanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".LeaderboardActivity"
             android:exported="false" />
         <activity

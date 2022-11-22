@@ -8,6 +8,21 @@ plugins {
     id 'com.android.library' version '7.3.1' apply false
 }
 
+/*allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            url "https://cardinalcommerceprod.jfrog.io/artifactory/android"
+            credentials {
+                username mavenUsername
+                password mavenPassword
+            }
+        }
+    }
+}*/
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

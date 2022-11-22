@@ -10,6 +10,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://cardinalcommerceprod.jfrog.io/artifactory/android"
+            credentials {
+                username mavenUsername
+                password mavenPassword
+            }
+        }
     }
 }
 rootProject.name = "Group Project"
