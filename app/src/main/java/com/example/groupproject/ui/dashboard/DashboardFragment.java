@@ -22,7 +22,7 @@ public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
-    private Button btnTrade, btnFinInfo, btnFinFutures, btnAddBalance;
+    private Button btnTrade, btnFinInfo, btnFinFutures, btnAddBalance, btnManageBrokerBalance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class DashboardFragment extends Fragment {
         btnFinInfo = binding.btnViewFinancialInfo;
         btnFinFutures = binding.btnViewPredictedFutures;
         btnAddBalance = binding.btnAddBalance;
+        btnManageBrokerBalance = binding.btnManageBrokerBalance;
 
         btnTrade.setOnClickListener(new View.OnClickListener() {
             @Override

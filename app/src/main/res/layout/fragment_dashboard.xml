@@ -10,7 +10,7 @@
         android:id="@+id/btnManageBrokerBalance"
         android:layout_width="300dp"
         android:layout_height="52dp"
-        android:text="broker managed balance"
+        android:text="Manage broker balance"
         android:textColor="#000000"
         app:backgroundTint="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
