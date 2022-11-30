@@ -216,20 +216,6 @@ public class TradeActivity extends AppCompatActivity{
                 Double newUserBalance = userBalance - Double.parseDouble(curTotalPrice);
 
                 curUserProfile.balance.put("euroBalance", String.valueOf(newUserBalance));
-
-                db.collection("users").document(userID).set(curUserProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(TradeActivity.this, "You successfully purchased " + curSelectedStock + " stock worth " + curTotalPrice, Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(TradeActivity.this, "Failed to complete purchase", Toast.LENGTH_SHORT).show();
-                        }
-                        Intent send = new Intent(TradeActivity.this, HomeActivity.class);
-                        startActivity(send);
-                    }
-                });
             }
             else{
                 Toast.makeText(TradeActivity.this, "Not enough balance to make this purchase", Toast.LENGTH_SHORT).show();

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.groupproject.AddBalanceActivity;
 import com.example.groupproject.FinantialInformationActivity;
+import com.example.groupproject.ManageBrokerBalanceActivity;
 import com.example.groupproject.PredictedFuturesActivity;
 import com.example.groupproject.TradeActivity;
 import com.example.groupproject.databinding.FragmentDashboardBinding;
@@ -66,6 +67,14 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent send = new Intent(getActivity(), AddBalanceActivity.class);
+                startActivity(send);
+            }
+        });
+
+        btnManageBrokerBalance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent send = new Intent(getActivity(), ManageBrokerBalanceActivity.class);
                 startActivity(send);
             }
         });
