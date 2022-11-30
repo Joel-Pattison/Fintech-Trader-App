@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.835" />
 
     <TextView
-        android:id="@+id/txtReview"
+        android:id="@+id/lblReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alfa_slab_one"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.396" />
 
     <EditText
-        android:id="@+id/inputReview"
+        android:id="@+id/txtReview"
         android:layout_width="238dp"
         android:layout_height="164dp"
         android:background="@drawable/border"

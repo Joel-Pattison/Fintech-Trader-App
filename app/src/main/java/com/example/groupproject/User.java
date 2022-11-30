@@ -1,5 +1,7 @@
 package com.example.groupproject;
 
+import android.media.Rating;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +12,8 @@ public class User {
     public Map<String, String> balance = new HashMap<>();
     public Map<String, String> techStocks = new HashMap<>();
     public Map<String, String> crypto = new HashMap<>();
-    public ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+    public ArrayList<Ticket> tickets = new ArrayList<>();
+    public ArrayList<Review> reviews = new ArrayList<>();
 
     public User(){
 
