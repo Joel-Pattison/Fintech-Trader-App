@@ -7,7 +7,7 @@
     tools:context=".SupportActivity">
 
     <EditText
-        android:id="@+id/inputSupport"
+        android:id="@+id/txtSupportTicketMessage"
         android:layout_width="303dp"
         android:layout_height="168dp"
         android:background="@drawable/border"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.186" />
 
     <Button
-        android:id="@+id/btnSubmitReview2"
+        android:id="@+id/btnSubmitTicket"
         android:layout_width="300dp"
         android:layout_height="52dp"
         android:text="submit"

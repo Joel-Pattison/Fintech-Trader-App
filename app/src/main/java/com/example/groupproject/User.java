@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ public class User {
     public Map<String, String> balance = new HashMap<>();
     public Map<String, String> techStocks = new HashMap<>();
     public Map<String, String> crypto = new HashMap<>();
+    public ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
     public User(){
 
     }
@@ -22,5 +25,9 @@ public class User {
         techStocks.put("AMD", "5");
         techStocks.put("Apple", "10");
         crypto.put("Bitcoin", "0.02");
+    }
+
+    public void addTicket(Ticket t){
+        this.tickets.add(t);
     }
 }
