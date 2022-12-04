@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.836" />
 
     <Spinner
-        android:id="@+id/drpBroker"
+        android:id="@+id/drpInstitution"
         android:layout_width="303dp"
         android:layout_height="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.26" />
 
     <Spinner
-        android:id="@+id/drpInstitution"
+        android:id="@+id/drpBroker"
         android:layout_width="303dp"
         android:layout_height="51dp"
         app:layout_constraintBottom_toBottomOf="parent"

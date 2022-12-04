@@ -46,17 +46,25 @@ public class RegisterActivity extends AppCompatActivity {
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkBroker.isChecked()) {
-                    registerUser();
+                registerUser();
+            }
+        });
+    }
+
+    private void userLogin() {
+        String email = txtEmail.getText().toString().trim();
+        String password = txtPassword.getText().toString().trim();
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
                     Intent send = new Intent(RegisterActivity.this, BrokerSelect.class);
                     startActivity(send);
                 }
                 else {
-                    registerUser();
-                    // Intent send = new Intent(RegisterActivity.this, HomeActivity.class);
-                    // startActivity(send);
+                    Toast.makeText(RegisterActivity.this, "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
     }
@@ -104,7 +112,6 @@ public class RegisterActivity extends AppCompatActivity {
                     User user = new User(name, email);
 
                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    // Toast.makeText(RegisterActivity.this, "inside", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                     db.collection("users").document(userID).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -112,6 +119,13 @@ public class RegisterActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 Toast.makeText(RegisterActivity.this, "Your account has been created", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
+                                if(checkBroker.isChecked()) {
+                                    userLogin();
+                                }
+                                else {
+                                    Intent send = new Intent(RegisterActivity.this, HomeActivity.class);
+                                    startActivity(send);
+                                }
                             }
                             else{
                                 Toast.makeText(RegisterActivity.this, "Failed to create account, try again", Toast.LENGTH_SHORT).show();

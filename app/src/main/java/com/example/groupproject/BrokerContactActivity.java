@@ -13,8 +13,8 @@ public class BrokerContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broker_contact);
 
-        txtBrokerEmail = findViewById(R.id.txtBrokerEmail);
-        txtBrokerPhone = findViewById(R.id.txtBrokerPhone);
+        txtBrokerEmail = findViewById(R.id.txtBrokerName);
+        txtBrokerPhone = findViewById(R.id.txtBrokerEmail);
 
         txtBrokerEmail.setText("Email: Example@gmail.com");
         txtBrokerPhone.setText("Phone: 083 888 8888");
