@@ -284,7 +284,7 @@ public class HomeFragment extends Fragment {
                 case "Bitcoin":
                     url += "BTC-USD";
                     break;
-                case "Etherium":
+                case "Ethereum":
                     url += "ETH-USD";
                     break;
             }
@@ -341,7 +341,7 @@ public class HomeFragment extends Fragment {
             case "Bitcoin":
                 url += "BTC-USD";
                 break;
-            case "Etherium":
+            case "Ethereum":
                 url += "ETH-USD";
                 break;
         }

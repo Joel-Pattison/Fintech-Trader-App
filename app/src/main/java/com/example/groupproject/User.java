@@ -1,6 +1,7 @@
 package com.example.groupproject;
 
 import android.media.Rating;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

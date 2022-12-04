@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +32,13 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Set;
 
 public class TradeActivity extends AppCompatActivity{
 
     Spinner drpTradeType, drpType, drpStock;
     ArrayAdapter<CharSequence> tech_stock_adapter, crypto_asset_adapter;
+    ArrayAdapter<String> user_tech_stock_adapter, user_crypto_asset_adapter;
     FirebaseFirestore db;
     private String userID;
     private FirebaseUser user;
@@ -71,6 +71,16 @@ public class TradeActivity extends AppCompatActivity{
                 .get().addOnCompleteListener(task -> {
                     if(task.isSuccessful() && task.getResult() != null){
                         curUserProfile = task.getResult().toObject(User.class);
+
+                        Set<String> keysetTech = curUserProfile.techStocks.keySet();
+                        String[] arrayTech = (String[]) keysetTech.toArray(new String[0]);
+                        user_tech_stock_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayTech);
+                        user_tech_stock_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                        Set<String> keysetCrypto = curUserProfile.crypto.keySet();
+                        String[] arrayCrypto = (String[]) keysetCrypto.toArray(new String[0]);
+                        user_crypto_asset_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayCrypto);
+                        user_crypto_asset_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     }else{
                         Toast.makeText(TradeActivity.this, "Something went wrong when trying to get your data.", Toast.LENGTH_LONG).show();
                     }
@@ -96,6 +106,36 @@ public class TradeActivity extends AppCompatActivity{
         crypto_asset_adapter = ArrayAdapter.createFromResource(this, R.array.crypto, android.R.layout.simple_spinner_item);
         crypto_asset_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        drpTradeType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(drpTradeType.getSelectedItem().toString().equals("Buy")){
+                    btnCompleteTrade.setText("Buy");
+
+                    if(drpType.getSelectedItem().toString().equals("Technology Shares")) {
+                        drpStock.setAdapter(tech_stock_adapter);
+                    }
+                    else if(drpType.getSelectedItem().toString().equals("Crypto Assets")) {
+                        drpStock.setAdapter(crypto_asset_adapter);
+                    }
+                }else{
+                    btnCompleteTrade.setText("Sell");
+
+                    if(drpType.getSelectedItem().toString().equals("Technology Shares")) {
+                        drpStock.setAdapter(user_tech_stock_adapter);
+                    }
+                    else if(drpType.getSelectedItem().toString().equals("Crypto Assets")) {
+                        drpStock.setAdapter(user_crypto_asset_adapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         drpType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -104,12 +144,20 @@ public class TradeActivity extends AppCompatActivity{
 
                 switch(selected_item) {
                     case "Technology Shares":
+                        if(drpTradeType.getSelectedItem().toString().equals("Buy")) {
+                            drpStock.setAdapter(tech_stock_adapter);
+                        }else{
+                            drpStock.setAdapter(user_tech_stock_adapter);
+                        }
                         curSelectedStockType = "Technology Shares";
-                        drpStock.setAdapter(tech_stock_adapter);
                         break;
                     case "Crypto":
+                        if(drpTradeType.getSelectedItem().toString().equals("Buy")) {
+                            drpStock.setAdapter(crypto_asset_adapter);
+                        }else{
+                            drpStock.setAdapter(user_crypto_asset_adapter);
+                        }
                         curSelectedStockType = "Crypto";
-                        drpStock.setAdapter(crypto_asset_adapter);
                         break;
                 }
             }
