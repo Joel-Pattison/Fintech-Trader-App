@@ -57,6 +57,7 @@ public class HomeFragment extends Fragment {
     private TextView txtCryptoAmount1, txtCryptoAmount2;
     private TextView txtCryptoPrice1, txtCryptoPrice2;
     private TextView lblBrokerBalance, lblBalance;
+    User curUserProfile;
     FirebaseFirestore db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -109,7 +110,7 @@ public class HomeFragment extends Fragment {
         db.collection("users").document(userID)
                 .get().addOnCompleteListener(task -> {
                     if(task.isSuccessful() && task.getResult() != null){
-                        User curUserProfile = task.getResult().toObject(User.class);
+                        curUserProfile = task.getResult().toObject(User.class);
 
                         String name = curUserProfile.name;
                         lblWelcome.setText("Welcome back, " + name + "!");
@@ -149,10 +150,15 @@ public class HomeFragment extends Fragment {
     public void displayBalance(User user) {
         Set keys = user.crypto.keySet();
         String balance = user.balance.get("euroBalance");
-        String brokerBalance = user.balance.get("brokerEuroBalance");
+        if(curUserProfile.brokerUID.trim().equals("none")){
+            lblBrokerBalance.setVisibility(View.INVISIBLE);
+        }
+        else{
+            String brokerBalance = user.balance.get("brokerEuroBalance");
+            lblBrokerBalance.setText(lblBrokerBalance.getText() + "€" + brokerBalance);
+        }
 
         lblBalance.setText(lblBalance.getText() + "€" + balance);
-        lblBrokerBalance.setText(lblBrokerBalance.getText() + "€" + brokerBalance);
 
     }
 

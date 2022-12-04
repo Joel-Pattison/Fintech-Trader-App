@@ -115,6 +115,12 @@ public class ManageBrokerBalanceActivity extends AppCompatActivity {
                 .get().addOnCompleteListener(task -> {
                     if(task.isSuccessful() && task.getResult() != null){
                         curUserProfile = task.getResult().toObject(User.class);
+
+                        if (curUserProfile.brokerUID.trim().equals("none")) {
+                            Toast.makeText(ManageBrokerBalanceActivity.this, "You do not have a broker, please select one", Toast.LENGTH_SHORT).show();
+                            Intent send = new Intent(ManageBrokerBalanceActivity.this, BrokerSelect.class);
+                            startActivity(send);
+                        }
                     }else{
                         Toast.makeText(ManageBrokerBalanceActivity.this, "Something went wrong when trying to get your data.", Toast.LENGTH_LONG).show();
                     }
