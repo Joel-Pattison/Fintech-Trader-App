@@ -24,6 +24,7 @@ import com.paypal.checkout.order.OnCaptureComplete;
 import com.paypal.checkout.order.Order;
 import com.paypal.checkout.order.PurchaseUnit;
 import com.paypal.checkout.paymentbutton.PayPalButton;
+import com.paypal.checkout.paymentbutton.PaymentButtonContainer;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 public class AddBalanceActivity extends AppCompatActivity {
 
     private static final String YOUR_CLIENT_ID = "AYFpCIrqcwNop2ULS5_Cwp9kSyi8pIsOhThRB521awH4d-xYDvnkRsqvYYccirxSQPk1KG-jvBiZbnYy";
-    PayPalButton payPalButton;
+    PaymentButtonContainer payPalButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class AddBalanceActivity extends AppCompatActivity {
                 UserAction.PAY_NOW
         ));
 
-        //payPalButton = findViewById(R.id.payPalButton);
+        payPalButton = findViewById(R.id.paymentButtonContainer);
 
         payPalButton.setup(
                 new CreateOrder() {

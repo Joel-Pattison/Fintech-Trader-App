@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.firebase:firebase-database:20.1.0'
-    implementation 'com.google.firebase:firebase-firestore:24.4.0'
+    implementation 'com.google.firebase:firebase-firestore:24.4.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
     implementation 'org.jsoup:jsoup:1.15.3'
     implementation 'com.paypal.checkout:android-sdk:0.8.6'
