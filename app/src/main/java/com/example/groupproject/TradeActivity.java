@@ -294,7 +294,12 @@ public class TradeActivity extends AppCompatActivity{
                     double newUserStockAmount = Double.parseDouble(userStockAmount) - Double.parseDouble(curStockAmount);
                     //double price = Double.parseDouble(amount) + Double.parseDouble(curTotalPrice);
                     //BigDecimal roundedPrice = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
-                    stocks.put(curSelectedStock, String.valueOf(newUserStockAmount));
+                    if(newUserStockAmount == 0){
+                        stocks.remove(curSelectedStock);
+                    }
+                    else{
+                        stocks.put(curSelectedStock, String.valueOf(newUserStockAmount));
+                    }
                     break;
                 case "Crypto":
                     if(curUserProfile.crypto.get(curSelectedStock) == null){
@@ -314,7 +319,12 @@ public class TradeActivity extends AppCompatActivity{
                     double newUserCryptoAmount = Double.parseDouble(userCryptoAmount) - Double.parseDouble(curStockAmount);
                     //double price = Double.parseDouble(amount) + Double.parseDouble(curTotalPrice);
                     BigDecimal roundedPrice = new BigDecimal(newUserCryptoAmount).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
-                    crypto.put(curSelectedStock, roundedPrice.toString());
+                    if(newUserCryptoAmount == 0){
+                        crypto.remove(curSelectedStock);
+                    }
+                    else{
+                        crypto.put(curSelectedStock, roundedPrice.toString());
+                    }
                     break;
             }
 

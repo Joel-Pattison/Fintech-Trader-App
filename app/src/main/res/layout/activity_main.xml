@@ -82,4 +82,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882"
+        app:srcCompat="@drawable/google" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
