@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -263,7 +264,23 @@ public class TradeActivity extends AppCompatActivity{
 
                 Double newUserBalance = userBalance - Double.parseDouble(curTotalPrice);
 
-                curUserProfile.balance.put("euroBalance", String.valueOf(newUserBalance));
+                BigDecimal roundedBalance = new BigDecimal(newUserBalance).setScale(2, RoundingMode.HALF_UP);
+
+                curUserProfile.balance.put("euroBalance", String.valueOf(roundedBalance));
+
+                db.collection("users").document(userID).set(curUserProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(TradeActivity.this, "You purchased " + curSelectedStock + " stock worth " + curTotalPrice, Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(TradeActivity.this, "Failed to complete complete the purchase", Toast.LENGTH_SHORT).show();
+                        }
+                        Intent send = new Intent(TradeActivity.this, HomeActivity.class);
+                        startActivity(send);
+                    }
+                });
             }
             else{
                 Toast.makeText(TradeActivity.this, "Not enough balance to make this purchase", Toast.LENGTH_SHORT).show();
