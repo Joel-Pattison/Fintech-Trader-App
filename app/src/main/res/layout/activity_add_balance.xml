@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".AddBalanceActivity">
 
+    <Button
+        android:id="@+id/btnAddFunds"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:text="Add Funds"
+        android:textColor="#000000"
+        app:backgroundTint="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.677" />
+
     <EditText
         android:id="@+id/txtTopupAmount"
         android:layout_width="300dp"
@@ -47,21 +60,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.186" />
 
-        <com.paypal.checkout.paymentbutton.PaymentButtonContainer
-        android:id="@+id/paymentButtonContainer"
-        android:layout_width="300dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606"
-        app:paypal_button_color="silver"
-        app:paypal_button_label="pay"
-        app:paypal_button_shape="rectangle"
-        app:paypal_button_size="large"
-        app:paypal_button_enabled="true" />
+<!--            <com.paypal.checkout.paymentbutton.PaymentButtonContainer
+            android:id="@+id/paymentButtonContainer"
+            android:layout_width="300dp"
+            android:layout_height="52dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.606"
+            app:paypal_button_color="silver"
+            app:paypal_button_label="pay"
+            app:paypal_button_shape="rectangle"
+            app:paypal_button_size="large"
+            app:paypal_button_enabled="true" />-->
 
 <!--    <com.paypal.checkout.paymentbutton.PayPalButton
         android:id="@+id/payPalButton"
