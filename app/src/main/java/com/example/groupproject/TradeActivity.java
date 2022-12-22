@@ -19,8 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
@@ -34,6 +36,8 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
 
 public class TradeActivity extends AppCompatActivity{
 
@@ -48,6 +52,7 @@ public class TradeActivity extends AppCompatActivity{
     EditText txtStockAmount;
     TextView txtPrice;
     Button btnCompleteTrade;
+    TextView txtStockAmountOwned;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,8 @@ public class TradeActivity extends AppCompatActivity{
         txtStockAmount = findViewById(R.id.txtStockAmount);
         txtPrice = findViewById(R.id.txtPrice);
         btnCompleteTrade = findViewById(R.id.btnCompleteTrade);
+        txtStockAmountOwned = findViewById(R.id.txtStockAmountOwned);
+        // txtStockAmountOwned.setVisibility(View.GONE);
 
         curStockPrice = "null";
         curTotalPrice = "null";
@@ -82,6 +89,32 @@ public class TradeActivity extends AppCompatActivity{
                         String[] arrayCrypto = (String[]) keysetCrypto.toArray(new String[0]);
                         user_crypto_asset_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayCrypto);
                         user_crypto_asset_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                        drpStock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                //String selected_item = parent.getItemAtPosition(position).toString();
+                                Thread stock1 = new Thread(() -> getPrice(parent.getItemAtPosition(position).toString()));
+                                stock1.start();
+                                curSelectedStock = parent.getItemAtPosition(position).toString();
+                                txtStockAmount.setText("");
+                                if(drpTradeType.getSelectedItem().toString().equals("Sell")){
+                                    if(curSelectedStockType.equals("Technology Shares")){
+                                        txtStockAmountOwned.setText("You own " + curUserProfile.techStocks.get(curSelectedStock) + " shares of " + curSelectedStock);
+                                    }else{
+                                        txtStockAmountOwned.setText("You own " + curUserProfile.crypto.get(curSelectedStock) + " shares of " + curSelectedStock);
+                                    }
+                                }
+                                else if(drpTradeType.getSelectedItem().toString().equals("Buy")){
+                                    txtStockAmountOwned.setText("Balance: €" + curUserProfile.balance.get("euroBalance"));
+                                }
+                            }
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+
                     }else{
                         Toast.makeText(TradeActivity.this, "Something went wrong when trying to get your data.", Toast.LENGTH_LONG).show();
                     }
@@ -168,21 +201,6 @@ public class TradeActivity extends AppCompatActivity{
             }
         });
 
-        drpStock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //String selected_item = parent.getItemAtPosition(position).toString();
-                Thread stock1 = new Thread(() -> getPrice(parent.getItemAtPosition(position).toString()));
-                stock1.start();
-                curSelectedStock = parent.getItemAtPosition(position).toString();
-                txtStockAmount.setText("");
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         txtStockAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -192,8 +210,37 @@ public class TradeActivity extends AppCompatActivity{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(curStockPrice != "null" && s.length() != 0){
+                    // limit the entered amount to the amount of the stock the user has, convert the value in the users profile to a double
+                    if(drpTradeType.getSelectedItem().toString().equals("Sell")){
+                        if(curSelectedStockType.equals("Technology Shares")){
+                            if(Double.parseDouble(s.toString()) > Double.parseDouble(curUserProfile.techStocks.get(curSelectedStock))){
+                                txtStockAmount.setText(String.valueOf(curUserProfile.techStocks.get(curSelectedStock)));
+                                s = curUserProfile.techStocks.get(curSelectedStock);
+                            }
+                        }else{
+                            if(Double.parseDouble(s.toString()) > Double.parseDouble(curUserProfile.crypto.get(curSelectedStock))){
+                                txtStockAmount.setText(String.valueOf(curUserProfile.crypto.get(curSelectedStock)));
+                                s = curUserProfile.crypto.get(curSelectedStock);
+                            }
+                        }
+                    }
+                    // make an else which compares the current total price with the user balance
+                    else if(drpTradeType.getSelectedItem().toString().equals("Buy")){
+                        if(curSelectedStockType.equals("Technology Shares")){
+                            if(Double.parseDouble(s.toString()) * Double.parseDouble(curStockPrice) > Double.parseDouble(curUserProfile.balance.get("euroBalance"))){
+                                txtStockAmount.setText(String.valueOf(Double.parseDouble(curUserProfile.balance.get("euroBalance")) / Double.parseDouble(curStockPrice)));
+                                s = String.valueOf(Double.parseDouble(curUserProfile.balance.get("euroBalance")) / Double.parseDouble(curStockPrice));
+                            }
+                        }else{
+                            if(Double.parseDouble(s.toString()) * Double.parseDouble(curStockPrice) > Double.parseDouble(curUserProfile.balance.get("euroBalance"))){
+                                txtStockAmount.setText(String.valueOf(Double.parseDouble(curUserProfile.balance.get("euroBalance")) / Double.parseDouble(curStockPrice)));
+                                s = String.valueOf(Double.parseDouble(curUserProfile.balance.get("euroBalance")) / Double.parseDouble(curStockPrice));
+                            }
+                        }
+                    }
+
                     double price = Double.parseDouble(s.toString()) * Double.parseDouble(curStockPrice);
-                    BigDecimal roundedPrice = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
+                    BigDecimal roundedPrice = new BigDecimal(price).setScale(2, RoundingMode.HALF_DOWN);
                     curTotalPrice = roundedPrice.toString();
                     String priceText = "€" + roundedPrice.toString();
                     curStockAmount = s.toString();
@@ -232,7 +279,7 @@ public class TradeActivity extends AppCompatActivity{
         if(curTotalPrice != "null" && curSelectedStock != "null"){
             double userBalance = Double.parseDouble(curUserProfile.balance.get("euroBalance"));
             //CHECKING TO SEE IF USER HAS ENOUGH BALANCE
-            if (userBalance > Double.parseDouble(curTotalPrice)){
+            if (userBalance >= Double.parseDouble(curTotalPrice)){
                 switch(curSelectedStockType){
                     case "Technology Shares":
                         Map<String, String> stocks = curUserProfile.techStocks;
@@ -299,12 +346,6 @@ public class TradeActivity extends AppCompatActivity{
                         break;
                     }
 
-                    if(Double.parseDouble(curUserProfile.techStocks.get(curSelectedStock)) < Double.parseDouble(curStockAmount)){
-                        Toast.makeText(TradeActivity.this, "You do not own enough of this stock", Toast.LENGTH_SHORT).show();
-                        toBreak = true;
-                        break;
-                    }
-
                     Map<String, String> stocks = curUserProfile.techStocks;
 
                     String userStockAmount = stocks.get(curSelectedStock);
@@ -321,12 +362,6 @@ public class TradeActivity extends AppCompatActivity{
                 case "Crypto":
                     if(curUserProfile.crypto.get(curSelectedStock) == null){
                         Toast.makeText(TradeActivity.this, "You do not own this crypto", Toast.LENGTH_SHORT).show();
-                        toBreak = true;
-                        break;
-                    }
-
-                    if(Double.parseDouble(curUserProfile.crypto.get(curSelectedStock)) < Double.parseDouble(curStockAmount)){
-                        Toast.makeText(TradeActivity.this, "You do not own enough of this crypto", Toast.LENGTH_SHORT).show();
                         toBreak = true;
                         break;
                     }

@@ -24,11 +24,11 @@ public class User {
         this.name = name;
         this.email = email;
         this.brokerUID = "none";
-        balance.put("euroBalance", "100");
-        balance.put("brokerEuroBalance", "500");
-        techStocks.put("AMD", "5");
-        techStocks.put("Apple", "10");
-        crypto.put("Bitcoin", "0.02");
+        balance.put("euroBalance", "0");
+        balance.put("brokerEuroBalance", "0");
+        // techStocks.put("AMD", "5");
+        // techStocks.put("Apple", "10");
+        // crypto.put("Bitcoin", "0.02");
     }
 
     public void addTicket(Ticket t){
